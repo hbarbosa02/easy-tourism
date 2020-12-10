@@ -7,7 +7,8 @@ import './styles.css';
 
 function HeaderMenu() {
   return (
-    <Container className="navbar-container">
+    <header>
+      <Container className="navbar-container">
         <div className="nav-row">
           <Row className="nav-infos">
             <Col md={4}><h3>PH Viagens e turismo</h3></Col>
@@ -18,11 +19,11 @@ function HeaderMenu() {
           <Row>
             <Col>
               <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand href="#home">PH Viagens</Navbar.Brand>
+                <Navbar.Brand href="/">PH Viagens</Navbar.Brand>
                 <Nav className="mr-auto">
-                  <Nav.Link href="#home">Inicio</Nav.Link>
-                  <Nav.Link href="#features">Viagens</Nav.Link>
-                  <Nav.Link href="#pricing">preços</Nav.Link>
+                  <Nav.Link href="/">Inicio</Nav.Link>
+                  <Nav.Link href="/travels">Viagens</Nav.Link>
+                  <Nav.Link href="/">preços</Nav.Link>
                 </Nav>
                 <Form inline>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -32,7 +33,8 @@ function HeaderMenu() {
             </Col>
           </Row>
         </div>
-    </Container>
+      </Container>
+    </header>
   );
 }
 
