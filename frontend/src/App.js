@@ -1,15 +1,11 @@
 import React from 'react';
 
-import HeaderMenu from './components/HeaderMenu';
+import "./assets/styles/global.css";
+
 import Routes from './routes';
 
 function App() {
-  return (
-    <>
-      <HeaderMenu />
-      <Routes />
-    </>
-  );
+  return <Routes />;
 }
 
 export default App;

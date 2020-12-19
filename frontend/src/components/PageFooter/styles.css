@@ -1,0 +1,15 @@
+.page-footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-footer .top-bar-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-title);
+    padding: 1.6rem 0;
+  }
+  
