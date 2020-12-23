@@ -8,6 +8,7 @@
 
 .input-block label {
   font-size: 1.4rem;
+  color: var(--color-title-in-primary);
 }
 
 .input-block input {
