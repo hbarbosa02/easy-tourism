@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
 
@@ -20,9 +19,9 @@ function PageHeader({ title, description, children }) {
           !userItem ? (
             <img className="user-avatar" src={userItem.avatar} alt={userItem.name} />
           ) : (
-            <Link to="/">
+            <label>
               <strong>Cadastro/Login</strong>
-            </Link>
+            </label>
           )
 
         }

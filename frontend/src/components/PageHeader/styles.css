@@ -25,16 +25,16 @@
     opacity: 0.6;
   }
   
-  .page-header .top-bar-container a {
+  .page-header .top-bar-container label {
     transition: opacity 0.2s;
     text-decoration: 'none';
   }
   
-  .page-header .top-bar-container a:hover {
+  .page-header .top-bar-container label:hover {
     opacity: 0.6;
   }
 
-  .page-header .top-bar-container a strong {
+  .page-header .top-bar-container label strong {
     font: 700 1.9rem Archivo;
     line-height: 4.2rem;
     color: var(--color-button-text);
@@ -83,7 +83,7 @@
       height: 5rem;
     }
 
-    .page-header .top-bar-container a strong {
+    .page-header .top-bar-container label strong {
       font-size: 2.3rem;
     }
 

@@ -15,19 +15,20 @@ function Home() {
     destination: 'RN, Natal',
     bio: 'Mussum Ipsum, cacilds vidis litro abertis. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.',
     cost: 1500,
-    whatsapp: '84998983330'
+    whatsapp: '84998983330',
+    leaving: '2020-12-31T08:00:00',
+    arrival: '2021-01-05T19:00:00',
   }
 
   return (
     <div id="page-home" className="container">
-      <PageHeader title="Estes são as viagens disponiveis.">
-        <form id="search-travels">
+      <PageHeader title="Estas são as viagens disponiveis.">
+        <form id="search-travels" onSubmit={() => console.log('submit form')}>
           <Select
             name="destination"
             label="Destino"
-            value={0}
             options={[
-              { value: "0", label: "Test Test Test local 1" },
+              { value: "0", label: "Test local 1" },
               { value: "1", label: "Test local 2" },
               { value: "2", label: "Test local 3" },
             ]}

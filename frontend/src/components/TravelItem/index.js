@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
 
+import MonetaryValue from '../../components/MonetaryValue';
+import DateTimeComponent from '../../components/DateTimeComponent';
+
 import './styles.css';
 
 function TravelItem({ travel }) {
@@ -29,10 +32,15 @@ function TravelItem({ travel }) {
                 </div>
             </header>
 
+            <div className="teacher-item-dates">
+                <p>Partida no dia: <strong><DateTimeComponent date={travel.leaving} /></strong></p>
+                <p>Chegada no dia: <strong><DateTimeComponent date={travel.arrival} /></strong></p>
+            </div>
+
             <p>{travel.bio}</p>
 
             <footer>
-                <p>Custo da viagem:<strong>R$ {travel.cost}</strong></p>
+                <p>Custo da viagem:<strong><MonetaryValue value={travel.cost} /></strong></p>
                 <a
                     target="_blank"
                     href={`https://wa.me/${travel.whatsapp}`}
