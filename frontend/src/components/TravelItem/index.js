@@ -39,8 +39,11 @@ function TravelItem({ travel }) {
 
             <p>{travel.bio}</p>
 
+            <p><strong>Para mais informações, entre em contato com a agencia de viagem.</strong></p>
+
             <footer>
                 <p>Custo da viagem:<strong><MonetaryValue value={travel.cost} /></strong></p>
+                
                 <a
                     target="_blank"
                     href={`https://wa.me/${travel.whatsapp}`}

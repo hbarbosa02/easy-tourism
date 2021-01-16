@@ -34,7 +34,7 @@
     opacity: 0.6;
   }
 
-  .page-header .top-bar-container label strong {
+  .page-header .top-bar-container label strong a {
     font: 700 1.9rem Archivo;
     line-height: 4.2rem;
     color: var(--color-button-text);
@@ -55,6 +55,7 @@
     font: 700 3.6rem Archivo;
     line-height: 4.2rem;
     color: var(--color-title-in-primary);
+    
   }
   
   .page-header .header-content p {

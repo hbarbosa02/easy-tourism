@@ -1,26 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
 
 import './styles.css';
 
 function PageHeader({ title, description, children }) {
-  
-  const userItem = {
-    avatar: 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',
-    name: 'Praia Bela',
-  }
+  const [userItem, setUserItem] = useState(null)
 
   return (
     <header className="page-header">
       <div className="top-bar-container">
         <img src={logoImg} alt="Proffy" />
         {
-          !userItem ? (
-            <img className="user-avatar" src={userItem.avatar} alt={userItem.name} />
+          userItem ? (
+            <img className="user-avatar" src={userItem && userItem.avatar} alt={userItem && userItem.name} />
           ) : (
             <label>
-              <strong>Cadastro/Login</strong>
+              <strong><Link to="/login">Cadastro/Login</Link></strong>
             </label>
           )
 
