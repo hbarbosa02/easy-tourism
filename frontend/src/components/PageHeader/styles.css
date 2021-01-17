@@ -40,7 +40,7 @@
     color: var(--color-button-text);
   }
 
-  .page-header .top-bar-container > img {
+  .page-header .top-bar-container a > img {
     height: 3.5rem;
   }
   

@@ -1,11 +1,11 @@
-#page-register {
+#page-forgot {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
   
-#form-register {
+#form-forgot {
     width: 400px;
     background: var(--color-primary);
     padding: 20px;
@@ -15,12 +15,12 @@
     border-radius: 0.8rem;
 }
 
-#form-register img {
+#form-forgot img {
     width: 30rem;
     margin: 10px 0 40px;
 }
 
-#form-register p {
+#form-forgot p {
     color: var(--color-button-text);
     margin-bottom: 15px;
     border: 1px solid var(--color-secundary);
@@ -29,7 +29,7 @@
     text-align: center;
 }
 
-#form-register input {
+#form-forgot input {
     width: 100%;
     height: 4rem;
     margin-bottom: 1.5rem;
@@ -41,7 +41,7 @@
     font: 1.6rem Archivo;
 }
 
-#form-register button {
+#form-forgot button {
     color: #fff;
     font-size: 2.1rem;
     background: var(--color-secundary);
@@ -51,24 +51,20 @@
     width: 100%;
 }
 
-#form-register button:hover {
-    background: var(--color-secundary-dark);
-}
-
-#form-register  hr {
+#form-forgot  hr {
     margin: 2.5rem 0;
     border: none;
     border-bottom: 0.2rem solid var(--color-box-base);
     width: 100%;
 }
 
-#form-register  a {
+#form-forgot  a {
     font-size: 1.7rem;
     font-weight: bold;
     color: var(--color-button-text);
     text-decoration: none;
 }
 
-#form-register  a:hover {
+#form-forgot  a:hover {
     opacity: 0.6;
-  }
+}

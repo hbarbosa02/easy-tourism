@@ -25,6 +25,7 @@ function Login() {
                     placeholder="Endereço de e-mail"
                     onChange={e => setEmail(e.target.value)}
                     maxLength={75}
+                    required="required" 
                 />
 
                 <input
@@ -34,6 +35,7 @@ function Login() {
                     onChange={e => setPassword(e.target.value)}
                     minLength={7}
                     maxLength={20}
+                    required="required" 
                 />
 
                 <button type="submit">Entrar</button>
@@ -41,9 +43,11 @@ function Login() {
                 <hr />
                 
                 <Link to="/register">Cadastre se</Link>
+                
+                <Link to="/forgot">Esqueci minha senha</Link>
 
                 <Link to="/">Retornar à página inicial</Link>
-
+                
             </form>
       </div>
     );
