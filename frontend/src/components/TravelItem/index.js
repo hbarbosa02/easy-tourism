@@ -8,7 +8,7 @@ import DateTimeComponent from '../../components/DateTimeComponent';
 
 import './styles.css';
 
-function TravelItem({ travel }) {
+function TravelItem({ travel, hideButtons = false }) {
     const modalOpen = () => {
         Swal.fire({
             imageUrl: travel.avatar,
@@ -29,6 +29,9 @@ function TravelItem({ travel }) {
                 <div>
                     <strong>{travel.place}</strong>
                     <span>{travel.destination}</span>
+                    {travel && travel.tickets && (
+                        <span>Vagas disponiveis: <label>{travel.tickets}</label></span>
+                    )}
                 </div>
             </header>
 
@@ -44,13 +47,25 @@ function TravelItem({ travel }) {
             <footer>
                 <p>Custo da viagem:<strong><MonetaryValue value={travel.cost} /></strong></p>
                 
-                <a
-                    target="_blank"
-                    href={`https://wa.me/${travel.whatsapp}`}
-                >
-                    <img src={whatsappIcon} alt="whatsapp" />
-                    Entrar em contato
-                </a>
+                {!hideButtons && (
+                    <>
+                    <button
+                        id="buy-ticket-button"
+                        target="_blank"
+                        href={'/payment'}
+                    >
+                        Comprar passagem
+                    </button>
+
+                    <button
+                        target="_blank"
+                        href={`https://wa.me/${travel.whatsapp}`}
+                    >
+                        <img src={whatsappIcon} alt="whatsapp" />
+                        Entrar em contato
+                    </button>
+                </>
+                )}
             </footer>
         </article>
     );

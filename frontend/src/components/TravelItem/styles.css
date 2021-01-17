@@ -32,6 +32,13 @@
     display: block;
     margin-top: 0.4rem;
   }
+
+  .teacher-item header div span label {
+    color: var(--color-primary);
+    margin-left: 0.5rem;
+    font: 700 1.8rem Archive;
+    font-weight: bolder;
+  }
   
   .teacher-item .teacher-item-dates {
     padding: 0 2rem 3rem;
@@ -74,8 +81,8 @@
     display: block;
   }
   
-  .teacher-item footer a {
-    width: 20rem;
+  .teacher-item footer button {
+    width: 15rem;
     height: 5.6rem;
     background: var(--color-secundary);
     color: var(--color-button-text);
@@ -89,9 +96,17 @@
     transition: 0.2ms;
     text-decoration: none;
   }
-  
-  .teacher-item footer a:hover {
+
+  .teacher-item footer button:hover {
     background: var(--color-secundary-dark);
+  }
+
+  .teacher-item footer #buy-ticket-button {
+    background: var(--color-primary);
+  }
+  
+  .teacher-item footer #buy-ticket-button:hover {
+    background: var(--color-primary-dark);
   }
   
   @media (min-width: 700px) {
@@ -119,7 +134,7 @@
     }
   
     .teacher-item footer button {
-      width: 24.5rem;
+      width: 18rem;
       font-size: 1.6rem;
       justify-content: center;
     }
