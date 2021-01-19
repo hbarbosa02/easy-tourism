@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
+import avatarImg from "../../assets/images/avatar.png";
 
 import './styles.css';
 
@@ -16,7 +17,7 @@ function PageHeader({userItem, title, description, children }) {
         {
           userItem ? (
             <Link to="/profile">
-              <img className="user-avatar" src={userItem && userItem.avatar} alt={userItem && userItem.name} />
+              <img className="user-avatar" src={avatarImg} alt='user-avatar' />
             </Link>
           ) : (
             <label>

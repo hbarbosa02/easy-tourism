@@ -12,13 +12,7 @@ function Home() {
   const [destination, setDestination] = useState(null)
   const [leaving, setLeaving] = useState('')
   const [arrival , setArrival ] = useState('')
-
-  const userItem = {
-      avatar: 'https://avatars2.githubusercontent.com/u/8129124?s=460&u=6ce1acc8ced2c8bad62b90e6241aa9d73ae9a9a0&v=4',
-      name: 'Hiran Gondim',
-      cpf: '016.770.584-98',
-      email: 'hira.g.b.silva@gmail.com'
-  }
+  const [userItem , setUserItem ] = useState(null)
 
   const travelItem = {
     avatar: 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',

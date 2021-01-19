@@ -56,14 +56,18 @@ function TravelItem({ travel, hideButtons = false }) {
                     >
                         Comprar passagem
                     </button>
-
-                    <button
-                        target="_blank"
-                        href={`https://wa.me/${travel.whatsapp}`}
-                    >
-                        <img src={whatsappIcon} alt="whatsapp" />
-                        Entrar em contato
-                    </button>
+                    
+                    {
+                        window.innerWidth > 800 && (
+                            <button
+                                target="_blank"
+                                href={`https://wa.me/${travel.whatsapp}`}
+                            >
+                                <img src={whatsappIcon} alt="whatsapp" />
+                                Entrar em contato
+                            </button>
+                        )
+                    }
                 </>
                 )}
             </footer>
