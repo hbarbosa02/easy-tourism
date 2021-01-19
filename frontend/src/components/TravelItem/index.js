@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 import whatsappIcon from "../../assets/images/icons/whatsapp.svg";
@@ -9,6 +9,12 @@ import DateTimeComponent from '../../components/DateTimeComponent';
 import './styles.css';
 
 function TravelItem({ travel, hideButtons = false }) {
+    const [width, setWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        setWidth(window.innerWidth)
+    },[])
+
     const modalOpen = () => {
         Swal.fire({
             imageUrl: travel.avatar,
@@ -58,7 +64,7 @@ function TravelItem({ travel, hideButtons = false }) {
                     </button>
                     
                     {
-                        window.innerWidth > 800 && (
+                        width > 800 && (
                             <button
                                 target="_blank"
                                 href={`https://wa.me/${travel.whatsapp}`}

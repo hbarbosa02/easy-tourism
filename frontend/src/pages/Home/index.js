@@ -12,7 +12,6 @@ function Home() {
   const [destination, setDestination] = useState(null)
   const [leaving, setLeaving] = useState('')
   const [arrival , setArrival ] = useState('')
-  const [userItem , setUserItem ] = useState(null)
 
   const travelItem = {
     avatar: 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',
@@ -36,7 +35,7 @@ function Home() {
 
   return (
     <div id="page-home" className="container">
-      <PageHeader userItem={userItem} title="Estas são as viagens disponiveis.">
+      <PageHeader title="Estas são as viagens disponiveis.">
         <form id="search-travels" onSubmit={handleSubmit}>
           <Select
             name="destination"
