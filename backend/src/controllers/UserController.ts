@@ -43,9 +43,7 @@ export default class UserController {
     } catch (error) {
       await trx.rollback();
 
-      return res
-        .status(400)
-        .json({ error: 'Unexpected error while creating new class.' });
+      return res.status(400).json({ error: 'Erro ao cadastrar usuário.' });
     }
   }
 }

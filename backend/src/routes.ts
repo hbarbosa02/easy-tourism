@@ -11,6 +11,7 @@ const sessionController = new SessionController();
 const userControllers = new UserController();
 
 routes.post('/login', sessionController.create);
+routes.post('/forgot', sessionController.update);
 routes.post('/signup', userControllers.create);
 
 routes.use(middleware);
