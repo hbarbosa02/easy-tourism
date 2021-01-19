@@ -2,10 +2,6 @@ import jwt from 'jwt-simple';
 
 interface UserType {
   id: string;
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
 }
 
 interface InfoType {

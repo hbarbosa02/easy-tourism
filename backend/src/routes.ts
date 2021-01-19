@@ -1,14 +1,20 @@
 import express from 'express';
 
-import ClassesController from './controllers/UserController';
+import middleware from './middlewares/auth';
+
+import UserController from './controllers/UserController';
 import SessionController from './controllers/SessionController';
 
 const routes = express.Router();
 
 const sessionController = new SessionController();
-const classesControllers = new ClassesController();
+const userControllers = new UserController();
 
 routes.post('/login', sessionController.create);
-routes.post('/signup', classesControllers.create);
+routes.post('/signup', userControllers.create);
+
+routes.use(middleware);
+
+routes.get('/user/index', userControllers.index);
 
 export default routes;

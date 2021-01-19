@@ -1,10 +1,16 @@
-import { Response, Request } from 'express';
+import { Response } from 'express';
 import { hashSync } from 'bcryptjs';
 
+import { IRequest } from '../middlewares/auth';
 import knex from '../database/connection';
 
 export default class UserController {
-  async create(req: Request, res: Response): Promise<Response> {
+  async index(req: IRequest, res: Response): Promise<Response> {
+    const user = await knex('users').where({ id: req.user.id }).first();
+    return res.json({ user });
+  }
+
+  async create(req: IRequest, res: Response): Promise<Response> {
     const { name, email, cpf, password, phone } = req.body;
 
     const user = await knex('users').where({ cpf }).orWhere({ email }).first();
