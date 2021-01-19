@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
+import api from "../../services/api";
+import { setToken } from "../../services/auth";
+import { fireSuccess, fireError } from "../../services/alert";
 
 import './styles.css';
 
 import logoImg from "../../assets/images/logo.svg";
 
 function Login() {
+    const history = useHistory();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        window.location.href = '/'
+
+        api
+            .post("login", {
+                email, password
+            })
+            .then(response => {
+                fireSuccess("Login realizado com sucesso!");
+                setToken(response.data.token);
+                history.push("/");
+            })
+            .catch(() => fireError("Email ou Senha incorretos!"));
     }
 
     return (

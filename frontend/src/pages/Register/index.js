@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import './styles.css';
 
 import logoImg from "../../assets/images/logo.svg";
 
-import { cpfMask } from '../../services/mask'
-import { fireError } from '../../services/alert'
+import api from "../../services/api";
+import { cpfMask, phoneMask } from '../../services/mask'
+import { fireSuccess, fireError } from '../../services/alert'
 
 function Register() {
+    const history = useHistory();
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [cpf, setCPF] = useState('')
+    const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -40,7 +44,15 @@ function Register() {
         e.preventDefault()
 
         if(checkPassword()){
-            window.location.href = '/login'
+            api
+                .post("signup", {
+                    name, email, cpf, phone, password
+                })
+                .then(() => {
+                    fireSuccess("Cadastro realizado com sucesso!");
+                    history.push("/login");
+                })
+                .catch(() => fireError("Ouve um erro com o Cadastro!"));
         }
     }
 
@@ -64,6 +76,15 @@ function Register() {
                     value={cpf}
                     onChange={e => setCPF(cpfMask(e.target.value))}
                     maxLength={14}
+                    required="required" 
+                />
+
+                <input
+                    type="text"
+                    placeholder="Telefone"
+                    value={phoneMask(phone)}
+                    onChange={e => setPhone(e.target.value)}
+                    maxLength={11}
                     required="required" 
                 />
 
