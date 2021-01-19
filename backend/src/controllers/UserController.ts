@@ -10,7 +10,9 @@ export default class UserController {
     const user = await knex('users').where({ cpf }).orWhere({ email }).first();
 
     if (user) {
-      throw new Error('Usuário com dados já existentes!');
+      return res
+        .status(400)
+        .json({ error: 'Usuário com dados já existentes!' });
     }
 
     const trx = await knex.transaction();
