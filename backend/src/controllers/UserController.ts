@@ -35,7 +35,6 @@ export default class UserController {
         cpf,
         phone,
         password: hashSync(password, 8),
-        avatar: 'test',
       });
 
       await trx.commit();
