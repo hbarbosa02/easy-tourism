@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
+import api from "../../services/api";
+import { fireSuccess, fireError } from "../../services/alert";
 
 import './styles.css';
 
 import logoImg from "../../assets/images/logo.svg";
 
+
 function ForgotPassword() {
+    const history = useHistory();
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
@@ -35,7 +41,15 @@ function ForgotPassword() {
         e.preventDefault()
 
         if(checkPassword()){
-            window.location.href = '/login'
+            api
+                .post("forgot", {
+                    email, password
+                })
+                .then(response => {
+                    fireSuccess("Senha alterada com sucesso!");
+                    history.push("/login");
+                })
+                .catch(() => fireError("Erro ao alterar senha!"));
         }
     }
 

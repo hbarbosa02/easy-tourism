@@ -27,7 +27,7 @@ function Login() {
                 setToken(response.data.token);
                 history.push("/");
             })
-            .catch(() => fireError("Email ou Senha incorretos!"));
+            .catch(() => fireError("Email ou senha incorretos!"));
     }
 
     return (

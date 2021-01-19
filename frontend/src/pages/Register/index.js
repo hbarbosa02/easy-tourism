@@ -52,7 +52,7 @@ function Register() {
                     fireSuccess("Cadastro realizado com sucesso!");
                     history.push("/login");
                 })
-                .catch(() => fireError("Ouve um erro com o Cadastro!"));
+                .catch(() => fireError("Ouve um erro com o cadastro!"));
         }
     }
 
