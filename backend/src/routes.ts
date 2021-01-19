@@ -16,7 +16,7 @@ routes.post('/signup', userControllers.create);
 
 routes.use(middleware);
 
-routes.get('/user/index', userControllers.index);
+routes.get('/user', userControllers.index);
 routes.get('/user/list', userControllers.list);
 
 export default routes;
