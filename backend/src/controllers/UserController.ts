@@ -6,7 +6,7 @@ import knex from '../database/connection';
 
 export default class UserController {
   async index(req: IRequest, res: Response): Promise<Response> {
-    const user = await knex('users').where({ id: req.user.id }).first();
+    const user = await knex('users').where({ id: req.user?.id }).first();
     return res.json({ user });
   }
 

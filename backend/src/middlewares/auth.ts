@@ -6,7 +6,7 @@ interface UserType {
 }
 
 export interface IRequest extends Request {
-  user: UserType;
+  user?: UserType;
 }
 
 export default async (
