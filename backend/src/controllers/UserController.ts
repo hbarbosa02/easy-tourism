@@ -10,6 +10,11 @@ export default class UserController {
     return res.json({ user });
   }
 
+  async list(req: IRequest, res: Response): Promise<Response> {
+    const user = await knex('users');
+    return res.json({ user });
+  }
+
   async create(req: IRequest, res: Response): Promise<Response> {
     const { name, email, cpf, password, phone } = req.body;
 
