@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import api from "../../services/api";
+import { getToken } from "../../services/auth";
+import { nameMask } from "../../services/mask";
 
 import PageFooter from '../../components/PageFooter';
 import PageHeader from '../../components/PageHeader';
@@ -14,6 +18,15 @@ function Profile() {
     const [arrival , setArrival ] = useState('')
     const [userItem , setUserItem ] = useState(null)
 
+    useEffect(() => {
+        api.get('user',{
+          headers: {
+            authorization: `Bearer ${getToken()}`
+          }
+        }).then((response) => {
+          setUserItem(response.data.user)
+        })
+    },[])
 
     const travelItem = {
         avatar: 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',
@@ -38,7 +51,7 @@ function Profile() {
         <div id="page-profile" className="container">
             <PageHeader 
                 userItem={userItem}
-                title={`Olá ${userItem.name} esse é seu histórico de viagens.`}
+                title={`Olá ${userItem && nameMask(userItem.name)} esse é seu histórico de viagens.`}
             >
                 <form id="search-travels-history" onSubmit={(e) => handleSubmit(e)}>
                     <Select

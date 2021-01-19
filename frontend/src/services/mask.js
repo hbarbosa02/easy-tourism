@@ -8,6 +8,15 @@ export const cpfMask = value => {
 }
 
 export const phoneMask = value => {
-  return value
-    .replace(/(\D)/g, '')
+    return value
+      .replace(/(\D)/g, '')
+}
+
+export const nameMask = value => {
+  const [first, second] = value.toLocaleLowerCase().split(' ')
+
+  return `
+      ${first.charAt(0).toUpperCase() + first.slice(1)} 
+      ${second.charAt(0).toUpperCase() + second.slice(1)}
+  `
 }
