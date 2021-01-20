@@ -13,8 +13,8 @@
   }
   
   .teacher-item header img {
-    width: 24rem;
-    height: 16rem;
+    width: 20rem;
+    height: 11rem;
   }
   
   .teacher-item header div {
@@ -115,6 +115,11 @@
       padding: 3.2rem;
     }
     
+    .teacher-item header img {
+      width: 25rem;
+      height: 16rem;
+    }
+
     .teacher-item .teacher-item-dates {
       padding: 0 3.2rem 3rem;
     }
