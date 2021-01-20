@@ -52,6 +52,7 @@ function Profile() {
             <PageHeader 
                 userItem={userItem}
                 title={`Olá ${userItem && nameMask(userItem.name)} esse é seu histórico de viagens.`}
+                isPerfil
             >
                 <form id="search-travels-history" onSubmit={(e) => handleSubmit(e)}>
                     <Select

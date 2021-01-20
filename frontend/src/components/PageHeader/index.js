@@ -6,7 +6,7 @@ import avatarImg from "../../assets/images/avatar.png";
 
 import './styles.css';
 
-function PageHeader({userItem = null, title, description, children }) {
+function PageHeader({userItem = null, title, description, children, isPerfil = false }) {
   return (
     <header className="page-header">
       <div className="top-bar-container">
@@ -15,16 +15,19 @@ function PageHeader({userItem = null, title, description, children }) {
         </Link>
 
         {
-          userItem ? (
+          userItem && !isPerfil ? (
             <Link to="/profile">
               <img className="user-avatar" src={avatarImg} alt='user-avatar' />
             </Link>
+          ) : userItem && isPerfil ? (
+            <label>
+              <strong><Link to="/logout">Sair</Link></strong>
+            </label>
           ) : (
             <label>
               <strong><Link to="/login">Cadastro/Login</Link></strong>
             </label>
           )
-
         }
       </div>
 
