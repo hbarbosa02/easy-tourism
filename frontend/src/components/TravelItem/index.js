@@ -55,23 +55,23 @@ function TravelItem({ travel, hideButtons = false }) {
                 
                 {!hideButtons && (
                     <>
-                    <button
+                    <a
                         id="buy-ticket-button"
                         target="_blank"
-                        href={'/payment'}
+                        // href={'/payment'}
                     >
                         Comprar passagem
-                    </button>
+                    </a>
                     
                     {
                         width > 800 && (
-                            <button
+                            <a
                                 target="_blank"
                                 href={`https://wa.me/${travel.whatsapp}`}
                             >
                                 <img src={whatsappIcon} alt="whatsapp" />
                                 Entrar em contato
-                            </button>
+                            </a>
                         )
                     }
                 </>
