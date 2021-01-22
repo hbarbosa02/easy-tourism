@@ -16,7 +16,7 @@ export default class UserController {
   }
 
   async create(req: IRequest, res: Response): Promise<Response> {
-    const { name, email, cpf, password, phone } = req.body;
+    const { email, cpf, password } = req.body;
 
     const user = await knex('users').where({ cpf }).orWhere({ email }).first();
 
@@ -30,10 +30,7 @@ export default class UserController {
 
     try {
       await trx('users').insert({
-        name,
-        email,
-        cpf,
-        phone,
+        ...req.body,
         password: hashSync(password, 8),
       });
 
