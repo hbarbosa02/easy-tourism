@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
     table.increments('id').primary();
     table.string('origin').nullable();
     table.string('destiny').nullable();
-    table.string('price').notNullable();
+    table.integer('price').notNullable();
     table.dateTime('travel_date').nullable();
     table.string('quantity').nullable();
     table.timestamps(false, true);
