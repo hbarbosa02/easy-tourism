@@ -7,12 +7,12 @@ import knex from '../database/connection';
 export default class UserController {
   async show(req: IRequest, res: Response): Promise<Response> {
     const user = await knex('users').where({ id: req.user?.id }).first();
-    return res.json({ user });
+    return res.status(200).json({ user });
   }
 
   async index(req: IRequest, res: Response): Promise<Response> {
     const user = await knex('users');
-    return res.json({ user });
+    return res.status(200).json({ user });
   }
 
   async create(req: IRequest, res: Response): Promise<Response> {

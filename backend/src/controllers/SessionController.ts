@@ -14,7 +14,7 @@ export default class SessionController {
       return res.status(400).json({ error: 'Email ou senha incorretos!' });
     }
 
-    return res.json({ token: Encode(user) });
+    return res.status(201).json({ token: Encode(user) });
   }
 
   async update(req: Request, res: Response): Promise<Response> {

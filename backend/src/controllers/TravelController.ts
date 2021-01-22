@@ -1,6 +1,4 @@
 import { Response } from 'express';
-import { hashSync } from 'bcryptjs';
-
 import { IRequest } from '../middlewares/auth';
 import knex from '../database/connection';
 
@@ -22,7 +20,9 @@ export default class TravelController {
       };
     });
 
-    return res.json({ travels: await Promise.all(completeTravels) });
+    return res
+      .status(200)
+      .json({ travels: await Promise.all(completeTravels) });
   }
 
   async show(req: IRequest, res: Response): Promise<Response> {
@@ -41,7 +41,7 @@ export default class TravelController {
 
     travel.image = await knex('travel_images').where({ travel_id: travel.id });
 
-    return res.json({ travel });
+    return res.status(200).json({ travel });
   }
 
   async create(req: IRequest, res: Response): Promise<Response> {
