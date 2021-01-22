@@ -18,8 +18,8 @@ routes.post('/signup', userControllers.create);
 
 routes.use(middleware);
 
-routes.get('/user', userControllers.index);
-routes.get('/user/list', userControllers.list);
+routes.get('/user', userControllers.show);
+routes.get('/user/list', userControllers.index);
 
 routes.get('/travel', travelController.index);
 routes.get('/travel/:travel_id', travelController.show);

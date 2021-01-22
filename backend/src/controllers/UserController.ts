@@ -5,12 +5,12 @@ import { IRequest } from '../middlewares/auth';
 import knex from '../database/connection';
 
 export default class UserController {
-  async index(req: IRequest, res: Response): Promise<Response> {
+  async show(req: IRequest, res: Response): Promise<Response> {
     const user = await knex('users').where({ id: req.user?.id }).first();
     return res.json({ user });
   }
 
-  async list(req: IRequest, res: Response): Promise<Response> {
+  async index(req: IRequest, res: Response): Promise<Response> {
     const user = await knex('users');
     return res.json({ user });
   }
