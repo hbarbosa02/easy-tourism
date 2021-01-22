@@ -3,11 +3,15 @@ import Knex from 'knex';
 export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable('travels', table => {
     table.increments('id').primary();
-    table.string('origin').nullable();
-    table.string('destiny').nullable();
+    table.string('place').notNullable();
+    table.string('origin').notNullable();
+    table.string('destiny').notNullable();
+    table.text('bio').notNullable();
+    table.string('whatsapp').notNullable();
     table.integer('price').notNullable();
-    table.dateTime('travel_date').nullable();
-    table.string('quantity').nullable();
+    table.dateTime('leaving').notNullable();
+    table.dateTime('arrival').notNullable();
+    table.integer('quantity').notNullable();
     table.timestamps(false, true);
   });
 }
