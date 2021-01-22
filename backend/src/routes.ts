@@ -5,12 +5,14 @@ import middleware from './middlewares/auth';
 import UserController from './controllers/UserController';
 import SessionController from './controllers/SessionController';
 import TravelController from './controllers/TravelController';
+import PaymentController from './controllers/PaymentController';
 
 const routes = express.Router();
 
 const sessionController = new SessionController();
 const userControllers = new UserController();
 const travelController = new TravelController();
+const paymentController = new PaymentController();
 
 routes.post('/login', sessionController.create);
 routes.post('/forgot', sessionController.update);
@@ -26,5 +28,8 @@ routes.get('/travel/:travel_id', travelController.show);
 routes.post('/travel', travelController.create);
 routes.put('/travel/:travel_id', travelController.update);
 routes.delete('/travel/:travel_id', travelController.delete);
+
+routes.get('/payment/validate', paymentController.validate);
+routes.post('/payment', paymentController.create);
 
 export default routes;
