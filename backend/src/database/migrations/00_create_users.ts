@@ -8,6 +8,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string('cpf').notNullable();
     table.string('password').notNullable();
     table.string('phone').nullable();
+    table.dateTime('birthday').nullable();
     table.timestamps(false, true);
   });
 }
