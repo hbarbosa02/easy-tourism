@@ -5,6 +5,7 @@ import knex from '../database/connection';
 export default class TravelController {
   async index(req: IRequest, res: Response): Promise<Response> {
     const user = await knex('users').where({ id: req.user?.id }).first();
+
     if (!user) {
       return res.status(400).json({ error: 'token not authorized' });
     }
@@ -45,14 +46,7 @@ export default class TravelController {
   }
 
   async create(req: IRequest, res: Response): Promise<Response> {
-    const {
-      origin,
-      destiny,
-      price,
-      travel_date: travelDate,
-      quantity,
-      images,
-    } = req.body;
+    const { images } = req.body;
 
     const user = await knex('users').where({ id: req.user?.id }).first();
     if (!user) {
@@ -62,13 +56,7 @@ export default class TravelController {
     const trx = await knex.transaction();
 
     try {
-      const [travelId] = await trx('travels').insert({
-        origin,
-        destiny,
-        price,
-        travel_date: travelDate,
-        quantity,
-      });
+      const travel = await trx('travels').insert({ ...req.body });
 
       // insere as imagens
 
@@ -78,22 +66,15 @@ export default class TravelController {
     } catch (error) {
       await trx.rollback();
 
-      return res
-        .status(400)
-        .json({ error: 'Unexpected error while creating new class.' });
+      return res.status(400).json({
+        error: 'Unexpected error while creating new class.',
+      });
     }
   }
 
   async update(req: IRequest, res: Response): Promise<Response> {
     const travelId = req.params.travel_id;
-    const {
-      origin,
-      destiny,
-      price,
-      travel_date: travelDate,
-      quantity,
-      images,
-    } = req.body;
+    const { images } = req.body;
 
     const user = await knex('users').where({ id: req.user?.id }).first();
     if (!user) {
@@ -111,15 +92,7 @@ export default class TravelController {
         return res.status(400).json({ error: "Travel doesn't exists." });
       }
 
-      await trx('travels')
-        .where({ id: travelId })
-        .update({
-          origin: origin || travel.origin,
-          destiny: destiny || travel.destiny,
-          price: price || travel.price,
-          travel_date: travelDate || travel.travel_date,
-          quantity: quantity || travel.quantity,
-        });
+      await trx('travels').where({ id: travelId }).update(req.body);
 
       // atualiza as imagens
 
@@ -129,15 +102,17 @@ export default class TravelController {
     } catch (error) {
       await trx.rollback();
 
-      return res
-        .status(400)
-        .json({ error: 'Unexpected error while creating new class.' });
+      return res.status(400).json({
+        error: 'Unexpected error while creating new class.',
+      });
     }
   }
 
   async delete(req: IRequest, res: Response): Promise<Response> {
     const travelId = req.params.travel_id;
+
     const user = await knex('users').where({ id: req.user?.id }).first();
+
     if (!user) {
       return res.status(400).json({ error: 'token not authorized' });
     }
