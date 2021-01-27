@@ -77,4 +77,36 @@ export default class Stone {
       }),
     );
   }
+
+  async findTransctions(): Promise<Transaction[]> {
+    return pagarme.client
+      .connect({ api_key: this.API_KEY })
+      .then(client => client.transactions.all());
+  }
+
+  async findTransction(transactionId: string): Promise<Transaction> {
+    return pagarme.client
+      .connect({ api_key: this.API_KEY })
+      .then(client => client.transactions.find({ id: transactionId }));
+  }
+
+  async refundTransaction(transactionId: string): Promise<Transaction> {
+    return pagarme.client.connect({ api_key: this.API_KEY }).then(client =>
+      client.transactions.refund({
+        id: transactionId,
+      }),
+    );
+  }
+
+  async partialRefundTransaction(
+    transactionId: string,
+    amount: number,
+  ): Promise<Transaction> {
+    return pagarme.client.connect({ api_key: this.API_KEY }).then(client =>
+      client.transactions.refund({
+        id: transactionId,
+        amount,
+      }),
+    );
+  }
 }
