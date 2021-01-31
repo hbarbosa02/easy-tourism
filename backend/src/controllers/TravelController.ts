@@ -1,4 +1,5 @@
 import { Response } from 'express';
+import { subHours } from 'date-fns';
 import { IRequest } from '../middlewares/auth';
 import knex from '../database/connection';
 
@@ -10,7 +11,9 @@ export default class TravelController {
       return res.status(400).json({ error: 'token not authorized' });
     }
 
-    const travels = await knex('travels');
+    const travels = await knex('travels').where(builder => {
+      builder.where('leaving', '>=', subHours(new Date(), 3));
+    });
 
     const completeTravels = travels.map(async travel => {
       const image = await knex('travel_images').where({ travel_id: travel.id });
