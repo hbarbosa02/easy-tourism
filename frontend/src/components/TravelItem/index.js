@@ -30,7 +30,7 @@ function TravelItem({ travel, hideButtons = false }) {
     return (
         <article className="teacher-item">
             <header>
-                <img src={travel.avatar} alt={travel.place} onClick={modalOpen} />
+                <img src={travel.image[0] || 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg'} alt={travel.place} onClick={modalOpen} />
 
                 <div>
                     <strong>{travel.place}</strong>
@@ -51,7 +51,7 @@ function TravelItem({ travel, hideButtons = false }) {
             <p><strong>Para mais informações, entre em contato com a agencia de viagem.</strong></p>
 
             <footer>
-                <p>Custo da viagem:<strong><MonetaryValue value={travel.cost} /></strong></p>
+                <p>Custo da viagem:<strong><MonetaryValue value={travel.price} /></strong></p>
                 
                 {!hideButtons && (
                     <>

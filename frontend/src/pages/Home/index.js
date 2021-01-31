@@ -16,6 +16,7 @@ function Home() {
   const [leaving, setLeaving] = useState('')
   const [arrival , setArrival ] = useState('')
   const [userItem , setUserItem ] = useState(null)
+  const [travelItens , setTravelItens ] = useState([])
 
   useEffect(() => {
       api.get('user',{
@@ -25,6 +26,14 @@ function Home() {
       }).then((response) => {
         setUserItem(response.data.user)
       })
+
+      api.get('travel',{
+        headers: {
+          authorization: `Bearer ${getToken()}`
+        }
+      }).then((response) => {
+        setTravelItens(response.data.travels)
+      }).catch(err => console.log)
   },[])
 
   const travelItem = {
@@ -42,8 +51,14 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log('submit form')
-    console.log(destination, leaving, arrival)
+    api.get('travel',{
+      params: { destination, leaving, arrival },
+      headers: {
+        authorization: `Bearer ${getToken()}`
+      }
+    }).then((response) => {
+      setTravelItens(response.data.travels)
+    }).catch(err => console.log)
   } 
 
 
@@ -84,15 +99,7 @@ function Home() {
       </PageHeader>
 
       <main>
-          <TravelItem travel={travelItem} />
-
-          <TravelItem travel={travelItem} />
-
-          <TravelItem travel={travelItem} />
-
-          <TravelItem travel={travelItem} />
-
-          <TravelItem travel={travelItem} />
+          {travelItens.map((item, index) => <TravelItem key={index} travel={item} />)}
       </main>
 
       <PageFooter />
