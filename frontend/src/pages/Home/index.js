@@ -49,7 +49,7 @@ function Home() {
 
   return (
     <div id="page-home" className="container">
-      <PageHeader userItem={userItem} title="Estas são as viagens disponiveis.">
+      <PageHeader userItem={userItem} title="Estas são as viagens disponíveis.">
         <form id="search-travels" onSubmit={handleSubmit}>
           <Select
             name="destination"

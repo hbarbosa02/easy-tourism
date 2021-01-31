@@ -25,7 +25,7 @@ function Login() {
             .then(response => {
                 fireSuccess("Login realizado com sucesso!");
                 setToken(response.data.token);
-                history.push("/");
+                history.push("/home");
             })
             .catch(() => fireError("Email ou senha incorretos!"));
     }
@@ -62,7 +62,7 @@ function Login() {
                 
                 <Link to="/forgot">Esqueci minha senha</Link>
 
-                <Link to="/">Retornar à página inicial</Link>
+                <Link to="/home">Retornar à página inicial</Link>
                 
             </form>
       </div>

@@ -123,7 +123,7 @@ function Register() {
                 
                 <Link to="/login">Fazer login</Link>
 
-                <Link to="/">Retornar à página inicial</Link>
+                <Link to="/home">Retornar à página inicial</Link>
             </form>
       </div>
     );

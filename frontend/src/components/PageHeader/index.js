@@ -10,7 +10,7 @@ function PageHeader({userItem = null, title, description, children, isPerfil = f
   return (
     <header className="page-header">
       <div className="top-bar-container">
-        <Link to="/">
+        <Link to="/home">
           <img src={logoImg} alt="Proffy" />
         </Link>
 

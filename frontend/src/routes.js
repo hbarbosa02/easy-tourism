@@ -7,11 +7,13 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
+import Landing from "./pages/Landing";
 
 function Routes() {
   return (
     <BrowserRouter>
-      <Route path="/" exact component={Home} />
+      <Route path="/" exact component={Landing} />
+      <Route path="/home" exact component={Home} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
