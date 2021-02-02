@@ -5,6 +5,8 @@ import knex from '../database/connection';
 
 export default class TravelController {
   async index(req: IRequest, res: Response): Promise<Response> {
+    const params = req.query;
+
     const user = await knex('users').where({ id: req.user?.id }).first();
 
     if (!user) {
@@ -12,7 +14,19 @@ export default class TravelController {
     }
 
     const travels = await knex('travels').where(builder => {
-      builder.where('leaving', '>=', subHours(new Date(), 3));
+      if (!params || !params.leaving)
+        builder.where('leaving', '>=', subHours(new Date(), 3));
+
+      if (params && params.destination)
+        builder.where('destination', 'LIKE', params.destination);
+
+      if (params && (params.leaving || params.arrival)) {
+        const leaving = params.leaving || new Date(2000, 1, 1);
+        const arrival = params.arrival || new Date(2077, 1, 1);
+
+        builder.where('leaving', '>=', leaving);
+        builder.where('arrival', '<=', arrival);
+      }
     });
 
     const completeTravels = travels.map(async travel => {
