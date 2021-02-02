@@ -35,8 +35,20 @@
   #page-home main {
     margin: 3.2rem auto;
     width: 90%;
+    min-height: 60%;
   }
   
+  
+  #page-home main label strong {
+    font: 700 4rem Archivo;
+    text-align: center;
+    line-height: 4.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-line-in-white);
+  }
+
   @media (min-width: 700px) {
     #page-home {
       max-width: 100%;
@@ -59,6 +71,18 @@
       padding: 3.2rem 0;
       max-width: 740px;
       margin: 0 auto;
+      min-height: 60%;
+    }
+
+    #page-home main label strong {
+      font: 700 4rem Archivo;
+      text-align: center;
+      line-height: 4.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 15rem;
+      color: var(--color-line-in-white);
     }
   }
   

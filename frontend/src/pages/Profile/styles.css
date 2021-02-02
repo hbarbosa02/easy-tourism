@@ -45,7 +45,7 @@
 
     #search-travels-history {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 2fr);
         column-gap: 16px;
         position: absolute;
         bottom: -28px;

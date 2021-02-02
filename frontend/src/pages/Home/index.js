@@ -99,7 +99,15 @@ function Home() {
       </PageHeader>
 
       <main>
-          {travelItens.map((item, index) => <TravelItem key={index} travel={item} />)}
+          {
+            travelItens.length > 0 ? 
+              travelItens.map((item, index) => <TravelItem key={index} travel={item} />) : 
+              (
+                <label>
+                  <strong>Nenhuma viagem cadastrada durante esse período.</strong>
+                </label>
+              )
+          }
       </main>
 
       <PageFooter />
