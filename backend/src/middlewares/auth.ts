@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { Decode } from '../utils/context';
 
 interface UserType {
-  id: string;
+  id: string | undefined;
 }
 
 export interface IRequest extends Request {
@@ -16,14 +16,12 @@ export default async (
 ): Promise<any> => {
   const authHeader = req.headers.authorization;
 
-  if (!authHeader) {
-    return res.status(401).json({ error: 'Token not provided' });
-  }
-
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = Decode(token);
+    const decoded =
+      token !== 'null' ? Decode(token) : { user: { id: undefined } };
+
     req.user = decoded.user;
 
     return next();

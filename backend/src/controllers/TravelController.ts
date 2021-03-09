@@ -7,18 +7,12 @@ export default class TravelController {
   async index(req: IRequest, res: Response): Promise<Response> {
     const params = req.query;
 
-    const user = await knex('users').where({ id: req.user?.id }).first();
-
-    if (!user) {
-      return res.status(400).json({ error: 'token not authorized' });
-    }
-
     const travels = await knex('travels').where(builder => {
       if (!params || !params.leaving)
         builder.where('leaving', '>=', subHours(new Date(), 3));
 
       if (params && params.destination)
-        builder.where('destination', 'LIKE', params.destination);
+        builder.where('place', 'LIKE', params.destination);
 
       if (params && (params.leaving || params.arrival)) {
         const leaving = params.leaving || new Date(2000, 1, 1);
@@ -46,11 +40,6 @@ export default class TravelController {
   async show(req: IRequest, res: Response): Promise<Response> {
     const travelId = req.params.travel_id;
 
-    const user = await knex('users').where({ id: req.user?.id }).first();
-    if (!user) {
-      return res.status(400).json({ error: 'token not authorized' });
-    }
-
     const travel = await knex('travels').where({ id: travelId }).first();
 
     if (!travel) {
@@ -65,7 +54,8 @@ export default class TravelController {
   async create(req: IRequest, res: Response): Promise<Response> {
     const { images } = req.body;
 
-    const user = await knex('users').where({ id: req.user?.id }).first();
+    const user =
+      req.user?.id && (await knex('users').where({ id: req.user?.id }).first());
     if (!user) {
       return res.status(400).json({ error: 'token not authorized' });
     }
@@ -93,7 +83,8 @@ export default class TravelController {
     const travelId = req.params.travel_id;
     const { images } = req.body;
 
-    const user = await knex('users').where({ id: req.user?.id }).first();
+    const user =
+      req.user?.id && (await knex('users').where({ id: req.user?.id }).first());
     if (!user) {
       return res.status(400).json({ error: 'token not authorized' });
     }

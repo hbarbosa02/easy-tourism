@@ -6,6 +6,7 @@ import UserController from './controllers/UserController';
 import SessionController from './controllers/SessionController';
 import TravelController from './controllers/TravelController';
 import PaymentController from './controllers/PaymentController';
+import DestinationController from './controllers/DestinationController';
 
 const routes = express.Router();
 
@@ -13,6 +14,7 @@ const sessionController = new SessionController();
 const userControllers = new UserController();
 const travelController = new TravelController();
 const paymentController = new PaymentController();
+const destinationController = new DestinationController();
 
 routes.post('/login', sessionController.create);
 routes.post('/forgot', sessionController.update);
@@ -31,5 +33,11 @@ routes.delete('/travel/:travel_id', travelController.delete);
 
 routes.get('/payment/validate', paymentController.validate);
 routes.post('/payment', paymentController.create);
+
+routes.get('/destiny', destinationController.index);
+routes.get('/destiny/:destiny_id', destinationController.show);
+routes.post('/destiny', destinationController.create);
+routes.put('/destiny/:destiny_id', destinationController.update);
+routes.delete('/destiny/:destiny_id', destinationController.delete);
 
 export default routes;
