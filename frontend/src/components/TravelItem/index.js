@@ -15,9 +15,9 @@ function TravelItem({ travel, hideButtons = false }) {
         setWidth(window.innerWidth)
     },[])
 
-    const modalOpen = () => {
+    const modalOpen = (image) => {
         Swal.fire({
-            imageUrl: travel.avatar,
+            imageUrl: image || 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',
             width: 1000,
             heightAuto: true,
             imageAlt: travel.place,
@@ -30,13 +30,13 @@ function TravelItem({ travel, hideButtons = false }) {
     return (
         <article className="teacher-item">
             <header>
-                <img src={travel.image[0] || 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg'} alt={travel.place} onClick={modalOpen} />
+                <img src={travel.image[0] || 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg'} alt={travel.place} onClick={() => modalOpen(travel.image[0])} />
 
                 <div>
                     <strong>{travel.place}</strong>
-                    <span>{travel.destination}</span>
-                    {travel && travel.tickets && (
-                        <span>Vagas disponiveis: <label>{travel.tickets}</label></span>
+                    <span>{travel.destiny}</span>
+                    {travel && travel.quantity && (
+                        <span>Vagas disponíveis: <label>{travel.quantity}</label></span>
                     )}
                 </div>
             </header>
@@ -51,20 +51,20 @@ function TravelItem({ travel, hideButtons = false }) {
             <p><strong>Para mais informações, entre em contato com a agencia de viagem.</strong></p>
 
             <footer>
-                <p>Custo da viagem:<strong><MonetaryValue value={travel.price} /></strong></p>
+                <p>Custo da viagem:<strong><MonetaryValue value={(travel.price).toString()} /></strong></p>
                 
                 {!hideButtons && (
                     <>
-                    <a
+                    {/* <a
                         id="buy-ticket-button"
                         target="_blank"
                         // href={'/payment'}
                     >
                         Comprar passagem
-                    </a>
-                    
+                    </a> */}
+{/*                     
                     {
-                        width > 800 && (
+                        width > 800 && ( */}
                             <a
                                 target="_blank"
                                 href={`https://wa.me/${travel.whatsapp}`}
@@ -72,8 +72,8 @@ function TravelItem({ travel, hideButtons = false }) {
                                 <img src={whatsappIcon} alt="whatsapp" />
                                 Entrar em contato
                             </a>
-                        )
-                    }
+                        {/* )
+                    } */}
                 </>
                 )}
             </footer>

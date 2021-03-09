@@ -17,15 +17,16 @@ function Home() {
   const [arrival , setArrival ] = useState('')
   const [userItem , setUserItem ] = useState(null)
   const [travelItens , setTravelItens ] = useState([])
+  const [destinations, setDestinations] = useState([])
 
   useEffect(() => {
-      api.get('user',{
-        headers: {
-          authorization: `Bearer ${getToken()}`
-        }
-      }).then((response) => {
-        setUserItem(response.data.user)
-      })
+      // api.get('user',{
+      //   headers: {
+      //     authorization: `Bearer ${getToken()}`
+      //   }
+      // }).then((response) => {
+      //   setUserItem(response.data.user)
+      // })
 
       api.get('travel',{
         headers: {
@@ -34,19 +35,18 @@ function Home() {
       }).then((response) => {
         setTravelItens(response.data.travels)
       }).catch(err => console.log)
-  },[])
 
-  const travelItem = {
-    avatar: 'https://jeunessetravel.com/wp-content/uploads/jeunesse-travel-video-thumbnail.jpg',
-    place: 'Praia Bela',
-    destination: 'RN, Natal',
-    bio: 'Mussum Ipsum, cacilds vidis litro abertis. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Posuere libero varius. Nullam a nisl ut ante blandit hendrerit. Aenean sit amet nisi. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Sapien in monti palavris qui num significa nadis i pareci latim.',
-    cost: 1500,
-    whatsapp: '84998983330',
-    leaving: '2020-12-31T08:00:00',
-    arrival: '2021-01-05T19:00:00',
-    tickets: 100
-  }
+      api.get('destiny',{
+        headers: {
+          authorization: `Bearer ${getToken()}`
+        }
+      }).then((response) => {
+        const data = response.data.destinations.map(destiny => {
+          return {value: destiny.name, label: `${destiny.name} - ${destiny.state}`}
+        })
+        setDestinations(data)
+      }).catch(err => console.log)
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -70,9 +70,8 @@ function Home() {
             name="destination"
             label="Destino"
             options={[
-              { value: "0", label: "Test local 1" },
-              { value: "1", label: "Test local 2" },
-              { value: "2", label: "Test local 3" },
+              { value: null, label: "Sem destino especifico" },
+              ...destinations
             ]}
             value={destination || ''}
             onChange={e => setDestination(e.target.value)}

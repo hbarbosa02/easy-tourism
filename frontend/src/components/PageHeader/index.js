@@ -14,7 +14,7 @@ function PageHeader({userItem = null, title, description, children, isPerfil = f
           <img src={logoImg} alt="Proffy" />
         </Link>
 
-        {
+        {/* {
           userItem && !isPerfil ? (
             <Link to="/profile">
               <img className="user-avatar" src={avatarImg} alt='user-avatar' />
@@ -28,7 +28,7 @@ function PageHeader({userItem = null, title, description, children, isPerfil = f
               <strong><Link to="/login">Cadastro/Login</Link></strong>
             </label>
           )
-        }
+        } */}
       </div>
 
       <div className="header-content">

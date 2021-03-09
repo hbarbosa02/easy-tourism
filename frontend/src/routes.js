@@ -14,11 +14,11 @@ function Routes() {
     <BrowserRouter>
       <Route path="/" exact component={Landing} />
       <Route path="/home" exact component={Home} />
-      <Route path="/register" component={Register} />
+      {/* <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/logout" component={Logout} />
       <Route path="/profile" component={Profile} />
-      <Route path="/forgot" component={ForgotPassword} />
+      <Route path="/forgot" component={ForgotPassword} /> */}
     </BrowserRouter>
   );
 }

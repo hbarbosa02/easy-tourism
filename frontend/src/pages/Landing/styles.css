@@ -51,6 +51,8 @@
     color: var(--color-button-text);
   
     transition: background-color 0.2s;
+
+    text-decoration: none;
   }
   
   .buttons-container a:first-child {

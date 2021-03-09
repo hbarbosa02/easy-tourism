@@ -43,16 +43,11 @@ function Landing() {
             Viagens
           </Link>
 
-          <Link to="/login" className="give-classes">
+          {/* <Link to="/login" className="give-classes">
             <img src={giveClassesIcon} alt="Cadastro/Login" />
             Cadastro/Login
-          </Link>
+          </Link> */}
         </div>
-
-        {/* <span className="total-connections">
-          Total de {totalConnections} viagens já realizadas{" "}
-          <img src={purpleHeartIcon} alt="Coração roxo" />
-        </span> */}
       </div>
     </div>
   );
